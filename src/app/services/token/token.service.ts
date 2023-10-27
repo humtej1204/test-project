@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class TokenService {
   constructor() { }
 
-  private isLogged = new BehaviorSubject<Boolean>(false);
+  private isLogged = new BehaviorSubject<boolean>(false);
   isLogged$ = this.isLogged.asObservable();
 
   saveToken(token: string) {

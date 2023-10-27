@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './views/pages/authentication/login/login.component';
 import { isLoggedGuard } from './guards/is-logged.guard';
 
 const routes: Routes = [
@@ -14,9 +13,9 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    // canActivate: [isLoggedGuard],
     loadChildren: () => import('./views/pages/dashboard/dashboard.module')
-      .then(m => m.DashboardModule)
+      .then(m => m.DashboardModule),
+    canActivate: [isLoggedGuard],
   },
   {
     path: '**', pathMatch: 'full', redirectTo: 'auth'
