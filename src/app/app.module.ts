@@ -11,9 +11,6 @@ import { DashboardComponent } from './views/pages/dashboard/dashboard.component'
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    DashboardComponent
   ],
   imports: [
     BrowserModule,

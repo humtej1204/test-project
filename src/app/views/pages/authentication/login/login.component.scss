@@ -1,0 +1,50 @@
+main {
+    background-image: url('https://images.designtrends.com/wp-content/uploads/2016/03/29115235/Abstract-Plain-White-Wallpaper-.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card_login {
+        width: 400px;
+        padding: 50px 25px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        gap: 1rem;
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #444;
+        }
+
+        mat-form-field {
+            width: 300px;
+        }
+
+        .btn_login {
+            padding: 10px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border: 1px #888 solid;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #444;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(#ccc, 0.5);
+            }
+        }
+    }
+}

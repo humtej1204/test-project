@@ -1,1 +1,37 @@
-<p>register works!</p>
+<main>
+    <div class="card_register" [formGroup]="registerForm">
+        <h1>Registrar</h1>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="name" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Correo</mat-label>
+            <input formControlName="email" matInput>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password"
+            [type]="hide1 ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Verificar contraseña</mat-label>
+            <input matInput [formControl]="confirmPass"
+            [type]="hide2 ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <button class="btn_register" (click)="registerUser()">
+            Registrar Usuario
+        </button>
+    </div>
+</main>
