@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from 'src/app/services/user/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserService } from 'src/app/services/user/user.service';
     HttpClientModule
   ],
   providers: [
-    UserService
+    UserService,
+    AuthService
   ]
 })
 export class AuthenticationModule { }

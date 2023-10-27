@@ -1,22 +1,26 @@
 <main>
-    <div class="card_login">
+    <div class="card_login" [formGroup]="loginForm">
         <h1>Login</h1>
 
         <mat-form-field appearance="outline">
             <mat-label>Correo</mat-label>
-            <input matInput>
+            <input matInput
+            formControlName="email">
         </mat-form-field>
         
         <mat-form-field appearance="outline">
             <mat-label>Contraseña</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
+            <input matInput [type]="hide ? 'password' : 'text'"
+            formControlName="password">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
 
-        <button class="btn_login">
+        <button class="btn_login" (click)="loginUser()">
             Ingresar
         </button>
+
+        <a href="/auth/register">Registrar usuario</a>
     </div>
 </main>

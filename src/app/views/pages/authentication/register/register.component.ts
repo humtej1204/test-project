@@ -49,11 +49,26 @@ export class RegisterComponent {
     return dataToSend;
   }
 
-  registerUser() {
+  validateForm(): boolean {
+    if (this.registerForm.invalid) return false;
+
+    if (this.registerForm.get('password')?.value !== this.confirmPass.value) {
+      return false;
+    }
+
+    return true;
+  }
+
+  registerUser(): void {
+    if (!this.validateForm()) {
+      console.log('Los datos ingresados no son correctos');
+      return;
+    }
+
     this.userService.registerUser(this.getDataToSend())
     .subscribe({
       next: (res: User) => {
-        console.log(res)
+        this.router.navigateByUrl('login');
       },
       error: (error: HttpErrorResponse) => {
         console.log(error)
