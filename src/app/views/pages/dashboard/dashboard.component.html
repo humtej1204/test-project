@@ -1,15 +1,18 @@
 <main>
     <header>
         <h1>Dashboard</h1>
-        <span class="info_user" *ngIf="user">
-            <a routerLink="/profile"> {{ user.name }} </a>
-        </span>
-        <button (click)="logout()">LogOut</button>
+        <div class="info_user">
+          <span class="username">{{ user?.name }}</span>
+          <button mat-icon-button (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+          </button>
+        </div>
     </header>
     <section>
         <mat-form-field>
             <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+            <input matInput (keyup)="applyFilter($event)"
+            placeholder="Escribe el nombre del pokemon que buscas" #input>
           </mat-form-field>
           
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
