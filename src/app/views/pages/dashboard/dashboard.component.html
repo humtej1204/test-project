@@ -3,8 +3,8 @@
         <h1>Dashboard</h1>
         <span class="info_user" *ngIf="user">
             <a routerLink="/profile"> {{ user.name }} </a>
-            <button (click)="logout()">LogOut</button>
         </span>
+        <button (click)="logout()">LogOut</button>
     </header>
     <section>
         <mat-form-field>

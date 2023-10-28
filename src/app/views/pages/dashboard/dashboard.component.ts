@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { PokeApiService } from 'src/app/services/pokeApi/poke-api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,11 +12,6 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 
 export class DashboardComponent {
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-  ) {}
-  
   ELEMENT_DATA: PeriodicElement[] = [
     {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
     {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
@@ -28,6 +24,13 @@ export class DashboardComponent {
     {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
     {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
   ];
+  user: User | null = null;
+
+  constructor(
+    private authService: AuthService,
+    private pokeServ: PokeApiService,
+    private router: Router,
+  ) {}
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
@@ -37,12 +40,12 @@ export class DashboardComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  user: User | null = null;
-
   ngOnInit(): void {
-    this.authService.myProfile$.subscribe(data => {
+    this.authService.myProfile$.subscribe((data: User|null) => {
       this.user = data;
     });
+
+    this.pokeServ.getAllPokemons().subscribe(console.log)
   }
 
   logout() {

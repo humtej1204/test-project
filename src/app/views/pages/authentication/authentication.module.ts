@@ -10,8 +10,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-import { UserService } from 'src/app/services/user/user.service';
-import { AuthService } from 'src/app/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -27,10 +25,6 @@ import { AuthService } from 'src/app/services/auth.service';
     MatIconModule,
     MatButtonModule,
     HttpClientModule
-  ],
-  providers: [
-    UserService,
-    AuthService
   ]
 })
 export class AuthenticationModule { }

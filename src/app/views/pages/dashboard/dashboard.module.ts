@@ -9,8 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user/user.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -28,9 +26,5 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     HttpClientModule
   ],
-  providers: [
-    UserService,
-    AuthService
-  ]
 })
 export class DashboardModule { }

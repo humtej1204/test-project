@@ -15,10 +15,17 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private tokenService: TokenService,
-  ) { }
+  ) {
+    this.verifyUserLogged();
+  }
 
   private profile = new BehaviorSubject<User | null>(null);
   myProfile$ = this.profile.asObservable();
+
+  verifyUserLogged() {
+    const userData = localStorage.getItem('user');
+    if (userData) this.profile.next(JSON.parse(userData) as User);
+  }
 
   login(data: UserLogin) {
     return this.http.post<Auth>(`${this.apiUrl}/login`, {email: data.email, password: data.password})
@@ -28,10 +35,13 @@ export class AuthService {
   }
 
   getProfile() {
-    return this.http.get<User>(`${this.apiUrl}/profile`,
-      { context: checkToken() }).pipe(
-        tap(res => this.profile.next(res))
-      )
+    return this.http.get<User>(`${this.apiUrl}/profile`, { context: checkToken() })
+    .pipe(
+      tap((res: User) => {
+        localStorage.setItem('user', JSON.stringify(res));
+        this.profile.next(res);
+      })
+    )
   }
 
   logout() {

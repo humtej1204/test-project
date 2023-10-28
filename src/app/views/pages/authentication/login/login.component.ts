@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { pipe, switchMap } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { Auth } from 'src/app/models/Auth.model';
 import { User, UserLogin } from 'src/app/models/User.model';
 import { AuthService } from 'src/app/services/auth.service';
