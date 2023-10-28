@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 
@@ -12,8 +12,12 @@ export class PokeApiService {
     private http: HttpClient
   ) { }
 
-  getAllPokemons() {
-    const data = this.http.get<any>(this.apiUrl)
+  getAllPokemons(offset: number = 0, limit: number = 10) {
+    let parameters = new HttpParams();
+    parameters = parameters.append('offset', offset.toString());
+    parameters = parameters.append('limit', limit.toString());
+
+    const data = this.http.get<any>(this.apiUrl, {params: parameters})
       .pipe(
         map(item => item.results.map((pokemon: any) => {
           return this.getPokemones(pokemon.url);

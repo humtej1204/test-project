@@ -15,20 +15,20 @@
           placeholder="Escribe el nombre del pokemon que buscas" #input>
         </mat-form-field>
         
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
         
           <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
           </ng-container>
         
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let element">{{element.name | titlecase}}</td>
           </ng-container>
         
           <ng-container matColumnDef="types">
-            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <th mat-header-cell *matHeaderCellDef>Tipo</th>
             <td mat-cell *matCellDef="let element">
               <div class="pokemon_types">
                 <span *ngFor="let type of element.types"
@@ -40,7 +40,7 @@
           </ng-container>
         
           <ng-container matColumnDef="img">
-            <th mat-header-cell *matHeaderCellDef> Imagen </th>
+            <th mat-header-cell *matHeaderCellDef>Imagen</th>
             <td mat-cell *matCellDef="let element">
               <img class="pokemon_img" [src]="element.img" alt="">
             </td>
@@ -54,5 +54,11 @@
             <td class="mat-cell" colspan="4">No data matching the filter {{input.value}}</td>
           </tr>
         </table>
+
+        <mat-paginator
+        [length]="1292"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
     </section>
 </main>
